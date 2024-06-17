@@ -32,10 +32,13 @@
         show_progress_bar:false,
         on_data_update: function(){
             jsPsych.data.addProperties({worker_id: urlvar.workerId});
+            jsPsych.data.addProperties({session: 'b'});
             timeline.push(save_data);
         },
         on_finish: function(){
             jsPsych.data.addProperties({worker_id: urlvar.workerId});
+            jsPsych.data.addProperties({session: 'b'});
+
             timeline.push(save_data);
         },
         max_load_time: 120000
@@ -53,7 +56,7 @@
     const save_data = {
       type: jsPsychPipe,
       action: "save",
-      experiment_id: "HiwjjuIcfGrH",
+      experiment_id: "xnNnavOAmoeq",
       filename: filename,
       data_string: ()=>jsPsych.data.get().csv()
     };
@@ -717,8 +720,13 @@ var demographics = {
         output = output + "Click the button below to complete the experiment. Goodbye!<br><br>";
       return output;
       },
-      choices: ["<a href='https://app.prolific.com/submissions/complete?cc=C58AKPLN'>Complete Experiment</a>"]      
-   };
+      choices: function(){
+          if(urlvar.workerId.length > 7){
+              return ["<a href='https://app.prolific.com/submissions/complete?cc=C58AKPLN'>Complete Experiment</a>"];
+          } else{
+              return ["<a href='https://app.prolific.com/submissions/complete?cc=C58AKPLN'>Complete Experiment</a>"]
+          }
+      };
     timeline.push(goodbye);
 
       

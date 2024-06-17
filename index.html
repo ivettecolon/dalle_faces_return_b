@@ -710,7 +710,8 @@ var demographics = {
       
     timeline.push(save_data); //ACTUALLY PUSHING DATA TO SERVER
       
-   var goodbye = {
+      
+ var goodbye = {
       type: jsPsychHtmlButtonResponse,
       stimulus: function(){
         output = "Woohoo! You have finished the experiment. <br>";
@@ -723,10 +724,12 @@ var demographics = {
       choices: function(){
           if(urlvar.workerId.length > 7){
               return ["<a href='https://app.prolific.com/submissions/complete?cc=C58AKPLN'>Complete Experiment</a>"];
-          } else{
+          };
+          else {
               return ["<a href='https://app.prolific.com/submissions/complete?cc=C58AKPLN'>Complete Experiment</a>"];
           };
       };
+   };
     timeline.push(goodbye);
 
       

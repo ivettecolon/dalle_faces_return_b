@@ -41,8 +41,8 @@
             
             timeline.push(save_data);
             
-            if(urlvar.workerId.length > 7){
-              window.location.assign("https://uwmadison.sona-systems.com/webstudy_credit.aspx?experiment_id=2118&credit_token=153e6eaa2280429e9b03be56865542b8&survey_code="+sona_id);
+            if(id.length > 7){
+              window.location.assign("https://uwmadison.sona-systems.com/webstudy_credit.aspx?experiment_id=2118&credit_token=153e6eaa2280429e9b03be56865542b8&survey_code="+id);
           };
         },
         max_load_time: 120000
@@ -54,7 +54,7 @@
     var filename = "triplets_fpo_faces_returners_b_" + secret_code + ".csv";
 
     var urlvar = jsPsych.data.urlVariables();  
-    let sona_id = urlvar.workerId;
+    let id = urlvar.workerId;
       
       
     const save_data = {
@@ -719,14 +719,14 @@ var demographics = {
       type: jsPsychHtmlButtonResponse,
       stimulus: function(){
         output = "Woohoo! You have finished the experiment. <br>";
-          if(urlvar.workerId.length > 7){
+          if(id.length > 7){
               output = output + "<strong> Here is your secret code: C58AKPLN </strong><br>";
           }
         output = output + "Click the button below to complete the experiment. Goodbye!<br><br>";
       return output;
       },
       choices: function(){
-          if(urlvar.workerId.length > 7){
+          if(id.length > 7){
               return ["<a href='https://app.prolific.com/submissions/complete?cc=C58AKPLN'>Complete Experiment</a>"];
           }
           else {
